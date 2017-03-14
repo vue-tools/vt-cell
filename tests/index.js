@@ -40,7 +40,13 @@ describe('vt-cell', () => {
             expect(vm.arrow).to.equal(true)
             expect(vm.$el.classList.contains('ui-cell--link')).to.equal(true)
             expect(vm.$el.classList.contains('ui-cell--access')).to.equal(true)
-            done()
+
+            vm.changeBgColor('remove', 150)
+
+            setTimeout(() => {
+                expect(vm.$el.classList.contains('ui-cell--access')).to.equal(false)
+                done()
+            }, 160)
         }, 0)
     })
 
