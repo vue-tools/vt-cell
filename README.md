@@ -29,29 +29,29 @@ export default {
     <Cells>
         <!-- 普通组件 -->
         <Cell>
-            <p slot="content">这里是内容</p>
+            <p slot="content">内容</p>
         </Cell>
         <!-- 带备注的组件 -->
         <Cell>
-            <p slot="content">这里是内容</p>
-            <p slot="label">这里是备注</p>
+            <p slot="content">内容</p>
+            <p slot="label">备注</p>
         </Cell>
         <!-- 带图标的组件 -->
         <Cell>
-            <p slot="icon">这里是图标</p>
-            <p slot="content">这里是内容</p>
+            <p slot="icon">图标</p>
+            <p slot="content">内容</p>
         </Cell>
         <!-- 通过 link 属性，使组件具有 Accessibility 效果 -->
         <Cell link>
-            <p slot="icon">这里是图标</p>
+            <p slot="icon">图标</p>
             <p slot="content">
                 <a href="https://google.com">Google</a>
             </p>
-            <p slot="label">这里是备注</p>
+            <p slot="label">备注</p>
         </Cell>
         <!-- 通过 arrow 属性，使用组件默认带箭头 -->
         <Cell arrow>
-            <p slot="content">这里是内容</p>
+            <p slot="content">内容</p>
         </Cell>
     </Cells>
 </template>
@@ -60,9 +60,37 @@ export default {
     import Cell from 'vt-cell'
 
     export default {
+        mounted() {
+            this.$nextTick(() => {
+                // 调整该文档样式代码，业务中不需要
+                document.documentElement.style.fontSize = '32px'
+                document.querySelector('.ui-cells').style.width = '320px'
+            })
+        },
         components: {
             Cell
         }
     }
 </script>
+```
+
+## Interface
+
+```interface
+props:
+  link:
+    type: Boolean
+    default: ''
+    description: 是否开启 Accessibility 效果
+  arrow:
+    type: Boolean
+    default: ''
+    description: 是否显示箭头
+slots:
+  icon:
+    description: 组件图标
+  content:
+    description: 组件内容
+  label:
+    description: 组件描述
 ```
